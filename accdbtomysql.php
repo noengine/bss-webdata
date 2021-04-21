@@ -47,7 +47,13 @@ $fix_table = array( "Blackburn Brian" => "Blackburn Bryan",
 		"visitor" => "Visitor",
 		"VISITOR" => "Visitor",
 		"wis`" => "Visitor",
-		"Sutherland Andrrew" => "Sutherland Andrew" );
+		"Sutherland Andrrew" => "Sutherland Andrew",
+		"Mcvey Lachlan" => "McVey Lachlan",
+		"marko Michael" => "Marko Michael",
+		"Jose matthew" => "Jose Matthew",
+		"Jose Mathew" => "Jose Matthew",
+		"Matt Jose" => "Jose Matthew",
+		"rubiano Armando" => "Rubiano Armando" );
 
 // Members table
 echo "Loading table members...\n";
@@ -140,7 +146,7 @@ while ($values = fgetcsv($handle)) {
     $inrows["membership_types"]++;
     if($stmt->execute()){
         $outrows["membership_types"]++;
-        print($outrows["membership_types"]."\r");
+        //print($outrows["membership_types"]."\r");
     } else {
         print("\nERROR: ".$db->error.">>".print_r($result)."\n");
     }
@@ -216,7 +222,7 @@ while ($values = fgetcsv($handle)) {
     $inrows["flight_log"]++;
     if($stmt->execute()){
         $outrows["flight_log"]++;
-        print($outrows["flight_log"]."\r");
+        //print($outrows["flight_log"]."\r");
     } else {
         print("\nERROR: ".$db->error.">>".print_r($result)."\n");
     }
@@ -300,7 +306,7 @@ while ($values = fgetcsv($handle)) {
     $inrows["gliders"]++;
     if($stmt->execute()){
         $outrows["gliders"]++;
-        print($outrows["gliders"]."\r");
+        //print($outrows["gliders"]."\r");
     } else {
         print("\nERROR: ".$db->error.">>".print_r($result)."\n");
     }
@@ -330,7 +336,7 @@ while ($values = fgetcsv($handle)) {
     $inrows["tugs"]++;
     if($stmt->execute()){
         $outrows["tugs"]++;
-        print($outrows["tugs"]."\r");
+        //print($outrows["tugs"]."\r");
     } else {
         print("\nERROR: ".$db->error.">>".print_r($result)."\n");
     }
@@ -351,7 +357,7 @@ function lookup_member_id($member_code,$COL) {
         return $members[$member_code];
     } else {
 		if ($COL != "P2") {  // don't care too much if P2 is not a member
-        print("WARNING: Unable to find member_id for '$member_code' for column $COL\n");
+        // print("WARNING: Unable to find member_id for '$member_code' for column $COL\n");
 		}
 	return NULL;
     }

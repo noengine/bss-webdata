@@ -60,12 +60,15 @@ then
     chktable "Glider List"
     chktable "Tug List"
   fi
+  # set up mysql connection
+  # ssh -f -i $SSHKEY -l $SSHUSER -L 3306:localhost:3306 -o StrictHostKeyChecking=no $SSHHOST "sleep infinity"
   # copy data into mysql
   /usr/bin/php accdbtomysql.php
   if [ $? -ne 0 ]
     then echo "ERROR: running accdbtomysql"
     exit 1
   fi
+  # pkill ssh tunnel? only if inside docker otherwise...oops
   # mysqldump local db (overwrite preexisting with >)
   mysqldump -u $DBUSER --single-transaction --password=$DBPASS $DBNAME | \
   sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip -9 > bssdata.sql.gz

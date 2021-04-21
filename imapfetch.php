@@ -15,7 +15,7 @@ $password = $_SERVER["MAILPASS"];
 $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to mail: ' . imap_last_error());
 
 /* grab emails */
-$emails = imap_search($inbox, 'SUBJECT "database"');
+$emails = imap_search($inbox, 'UNSEEN');
 
 /* if emails are returned, cycle through each... */
 if($emails) {
